@@ -6,5 +6,7 @@
   },
   "files.associations": {
     "*.erb": "erb"
-  }
+  },
+  "emmet.syntaxProfiles": {},
+  "workbench.editor.highlightModifiedTabs": true
 }
