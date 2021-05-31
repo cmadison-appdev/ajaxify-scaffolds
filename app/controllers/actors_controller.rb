@@ -53,6 +53,7 @@ class ActorsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to actors_url, notice: "Actor was successfully destroyed." }
       format.json { head :no_content }
+      format.js
     end
   end
 
