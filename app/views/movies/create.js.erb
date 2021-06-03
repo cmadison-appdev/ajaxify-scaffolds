@@ -1,0 +1,2 @@
+var added_movie = $("<tr> <td><%= @movie.title %> </td> <td><%= @movie.description %> </td> <td><%= @movie.duration %> </td> <td><%= @movie.year %> </td> <td><%= @movie.director.name %> </td> </tr>");
+$("#new_movie_form").after(added_movie);

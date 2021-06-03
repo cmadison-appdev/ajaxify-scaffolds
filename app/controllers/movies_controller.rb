@@ -1,5 +1,6 @@
 class MoviesController < ApplicationController
   before_action :set_movie, only: %i[ show edit update destroy ]
+  before_action :get_all_directors
 
   # GET /movies or /movies.json
   def index
@@ -27,9 +28,11 @@ class MoviesController < ApplicationController
       if @movie.save
         format.html { redirect_to @movie, notice: "Movie was successfully created." }
         format.json { render :show, status: :created, location: @movie }
+        format.js
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @movie.errors, status: :unprocessable_entity }
+        
       end
     end
   end
@@ -61,6 +64,10 @@ class MoviesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_movie
       @movie = Movie.find(params[:id])
+    end
+    
+    def get_all_directors
+      @all_directors = Director.all
     end
 
     # Only allow a list of trusted parameters through.
