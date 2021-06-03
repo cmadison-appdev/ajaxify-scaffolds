@@ -32,11 +32,9 @@
     <%= form.number_field :year %>
   </td>
 
-  <td class="field">
-    <%= form.label :director_id %>
-    <%= form.number_field :director_id %>
-  </td>
-
+  <td>
+  <%= collection_select(:movie, :director_id, @all_directors,:id, :name )%>
+  </td>  
   <td class="actions">
     <%= form.submit %>
   </td>
