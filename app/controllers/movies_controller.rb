@@ -1,6 +1,7 @@
 class MoviesController < ApplicationController
   before_action :set_movie, only: %i[ show edit update destroy ]
   before_action :get_all_directors
+  
 
   # GET /movies or /movies.json
   def index
@@ -18,6 +19,18 @@ class MoviesController < ApplicationController
 
   # GET /movies/1/edit
   def edit
+  end
+
+  def edit_title
+  end
+
+  def edit_description
+  end
+
+  def edit_length
+  end
+
+  def edit_year
   end
 
   # POST /movies or /movies.json
@@ -43,6 +56,7 @@ class MoviesController < ApplicationController
       if @movie.update(movie_params)
         format.html { redirect_to @movie, notice: "Movie was successfully updated." }
         format.json { render :show, status: :ok, location: @movie }
+        format.js
       else
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @movie.errors, status: :unprocessable_entity }
@@ -69,6 +83,7 @@ class MoviesController < ApplicationController
     def get_all_directors
       @all_directors = Director.all
     end
+
 
     # Only allow a list of trusted parameters through.
     def movie_params
