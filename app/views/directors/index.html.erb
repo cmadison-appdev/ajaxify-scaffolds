@@ -14,13 +14,13 @@
 
   <tbody>
     <% @directors.each do |director| %>
-      <tr>
+      <tr id="<%= dom_id(director)%>">
         <td><%= director.name %></td>
         <td><%= director.bio %></td>
         <td><%= director.dob %></td>
         <td><%= link_to 'Show', director %></td>
         <td><%= link_to 'Edit', edit_director_path(director) %></td>
-        <td><%= link_to 'Destroy', director, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Destroy', director, method: :delete, remote: true%></td>
       </tr>
     <% end %>
   </tbody>
@@ -29,3 +29,5 @@
 <br>
 
 <%= link_to 'New Director', new_director_path %>
+
+<%= @directors %>

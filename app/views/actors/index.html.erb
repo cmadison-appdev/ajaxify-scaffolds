@@ -14,13 +14,13 @@
 
   <tbody>
     <% @actors.each do |actor| %>
-      <tr>
+      <tr id="<%= dom_id(actor)%>">
         <td><%= actor.name %></td>
         <td><%= actor.bio %></td>
         <td><%= actor.dob %></td>
         <td><%= link_to 'Show', actor %></td>
         <td><%= link_to 'Edit', edit_actor_path(actor) %></td>
-        <td><%= link_to 'Destroy', actor, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Destroy', actor, method: :delete, remote: true %></td>
       </tr>
     <% end %>
   </tbody>

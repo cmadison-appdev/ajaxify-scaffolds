@@ -1,1 +1,3 @@
-json.partial! "actors/actor", actor: @actor
+# frozen_string_literal: true
+
+json.partial! 'actors/actor', actor: @actor
