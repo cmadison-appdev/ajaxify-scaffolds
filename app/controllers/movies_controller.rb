@@ -1,7 +1,8 @@
+# frozen_string_literal: true
+
 class MoviesController < ApplicationController
-  before_action :set_movie, only: %i[ show edit update destroy ]
+  before_action :set_movie, only: %i[show edit update destroy]
   before_action :get_all_directors
-  
 
   # GET /movies or /movies.json
   def index
@@ -9,8 +10,7 @@ class MoviesController < ApplicationController
   end
 
   # GET /movies/1 or /movies/1.json
-  def show
-  end
+  def show; end
 
   # GET /movies/new
   def new
@@ -18,20 +18,15 @@ class MoviesController < ApplicationController
   end
 
   # GET /movies/1/edit
-  def edit
-  end
+  def edit; end
 
-  def edit_title
-  end
+  def edit_title; end
 
-  def edit_description
-  end
+  def edit_description; end
 
-  def edit_length
-  end
+  def edit_length; end
 
-  def edit_year
-  end
+  def edit_year; end
 
   # POST /movies or /movies.json
   def create
@@ -39,13 +34,13 @@ class MoviesController < ApplicationController
 
     respond_to do |format|
       if @movie.save
-        format.html { redirect_to @movie, notice: "Movie was successfully created." }
+        format.html { redirect_to @movie, notice: 'Movie was successfully created.' }
         format.json { render :show, status: :created, location: @movie }
         format.js
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @movie.errors, status: :unprocessable_entity }
-        
+
       end
     end
   end
@@ -54,7 +49,7 @@ class MoviesController < ApplicationController
   def update
     respond_to do |format|
       if @movie.update(movie_params)
-        format.html { redirect_to @movie, notice: "Movie was successfully updated." }
+        format.html { redirect_to @movie, notice: 'Movie was successfully updated.' }
         format.json { render :show, status: :ok, location: @movie }
         format.js
       else
@@ -68,25 +63,25 @@ class MoviesController < ApplicationController
   def destroy
     @movie.destroy
     respond_to do |format|
-      format.html { redirect_to movies_url, notice: "Movie was successfully destroyed." }
+      format.html { redirect_to movies_url, notice: 'Movie was successfully destroyed.' }
       format.json { head :no_content }
-      format.js { render template: "movies/destroy.js.erb" }
+      format.js { render template: 'movies/destroy.js.erb' }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_movie
-      @movie = Movie.find(params[:id])
-    end
-    
-    def get_all_directors
-      @all_directors = Director.all
-    end
 
+  # Use callbacks to share common setup or constraints between actions.
+  def set_movie
+    @movie = Movie.find(params[:id])
+  end
 
-    # Only allow a list of trusted parameters through.
-    def movie_params
-      params.require(:movie).permit(:title, :description, :duration, :image, :year, :director_id)
-    end
+  def get_all_directors
+    @all_directors = Director.all
+  end
+
+  # Only allow a list of trusted parameters through.
+  def movie_params
+    params.require(:movie).permit(:title, :description, :duration, :image, :year, :director_id)
+  end
 end

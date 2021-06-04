@@ -1,1 +1,2 @@
-<%= movie = Movie.find(params[:id]) %>
+<%= text_area_tag :title, Movie.find(params[:id]).title %>
+

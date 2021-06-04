@@ -1,0 +1,13 @@
+<li id="<%= dom_id(movie)%>_title" >
+  <%= form_with(movie.title) do |form| %>
+
+    <div class="form-group">
+      <%= form.label :body, class: "sr-only" %>
+      <%= form.text_area :body, class: "form-control" %>
+    </div>
+
+    <div class="actions">
+      <%= form.submit class: "btn btn-outline-secondary btn-block" %>
+    </div>
+  <% end %>
+</li>

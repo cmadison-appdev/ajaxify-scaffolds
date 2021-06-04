@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class DirectorsController < ApplicationController
-  before_action :set_director, only: %i[ show edit update destroy ]
+  before_action :set_director, only: %i[show edit update destroy]
 
   # GET /directors or /directors.json
   def index
@@ -7,8 +9,7 @@ class DirectorsController < ApplicationController
   end
 
   # GET /directors/1 or /directors/1.json
-  def show
-  end
+  def show; end
 
   # GET /directors/new
   def new
@@ -16,8 +17,7 @@ class DirectorsController < ApplicationController
   end
 
   # GET /directors/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /directors or /directors.json
   def create
@@ -25,7 +25,7 @@ class DirectorsController < ApplicationController
 
     respond_to do |format|
       if @director.save
-        format.html { redirect_to @director, notice: "Director was successfully created." }
+        format.html { redirect_to @director, notice: 'Director was successfully created.' }
         format.json { render :show, status: :created, location: @director }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +38,7 @@ class DirectorsController < ApplicationController
   def update
     respond_to do |format|
       if @director.update(director_params)
-        format.html { redirect_to @director, notice: "Director was successfully updated." }
+        format.html { redirect_to @director, notice: 'Director was successfully updated.' }
         format.json { render :show, status: :ok, location: @director }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -51,20 +51,21 @@ class DirectorsController < ApplicationController
   def destroy
     @director.destroy
     respond_to do |format|
-      format.html { redirect_to directors_url, notice: "Director was successfully destroyed." }
+      format.html { redirect_to directors_url, notice: 'Director was successfully destroyed.' }
       format.json { head :no_content }
       format.js
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_director
-      @director = Director.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def director_params
-      params.require(:director).permit(:name, :bio, :dob, :image)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_director
+    @director = Director.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def director_params
+    params.require(:director).permit(:name, :bio, :dob, :image)
+  end
 end

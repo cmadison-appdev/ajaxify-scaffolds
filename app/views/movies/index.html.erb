@@ -20,7 +20,7 @@
     <% @movies.each do |movie| %>
       <tr id="<%= dom_id(movie) %>">
         <td id="<%= dom_id(movie)%>_title">
-        <%= link_to movie.title, movie %>
+        <%= link_to movie.title, edit_title_url(id: movie.id, movie: "movies") %>
         
         <td><%= movie.description %></td>
         <td><%= movie.duration %></td>
