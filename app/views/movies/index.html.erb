@@ -19,16 +19,23 @@
   <%= render 'form', movie: @movies.new %> </tr>
     <% @movies.each do |movie| %>
       <tr id="<%= dom_id(movie) %>">
-        <td id="<%= dom_id(movie)%>_title">
-        <%= link_to movie.title, edit_title_url(id: movie.id, movie: "movies") %>
         
-        <td><%= movie.description %></td>
-        <td><%= movie.duration %></td>
-        <td><%= movie.year %></td>
-        <td><%= movie.director.name %></td>
-        <td><%= link_to 'Destroy', movie, method: :delete,
-        remote: true%> </td>
+        <td id="<%= dom_id(movie)%>_title">
+        
+          <%= link_to movie.title, 
+            edit_title_url(id: movie.id, movie: "movies"), 
+            remote: true do %> 
+            </td>
+          <% end %>
+          <td><%= movie.description %></td>
+          <td><%= movie.duration %></td>
+          <td><%= movie.year %></td>
+          <td><%= movie.director.name %></td>
+          <td><%= link_to 'Destroy', movie, method: :delete,
+          remote: true%> </td>
       </tr>
+    
+    
     <% end %>
   </tbody>
 </table>

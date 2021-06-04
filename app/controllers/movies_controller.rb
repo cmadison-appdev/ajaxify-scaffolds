@@ -20,7 +20,13 @@ class MoviesController < ApplicationController
   # GET /movies/1/edit
   def edit; end
 
-  def edit_title; end
+  def edit_title
+    respond_to do |format|
+     format.js do 
+      render template: "edit_title.js.erb"
+  end
+  end
+end 
 
   def edit_description; end
 
